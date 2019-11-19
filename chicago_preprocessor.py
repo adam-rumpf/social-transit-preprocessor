@@ -22,7 +22,7 @@ facility_in = "chicago_data/raw/facility/facility_address.txt"
 facility_out = "chicago_data/intermediate/facility.txt"
 
 # Transit network parameters
-k_clusters = 1000 # number of stops after clustering (may be slightly less)
+k_clusters = 800 # number of stops after clustering (may be slightly less)
 stop_data = "chicago_data/raw/network/stops.txt"
 stop_list = "chicago_data/intermediate/all_stops.txt"
 trip_data = "chicago_data/raw/network/trips.txt"
@@ -733,7 +733,10 @@ def add_walking(cluster_file, arc_file, cutoff=0.5):
         arcnum = -np.inf
         f.readline()
         for line in f:
-            arcnum = max(arcnum, int(f.readline().split()[0]))
+            li = f.readline().split()
+            if len(li) > 0:
+                # Skip the blank line at the end
+                arcnum = max(arcnum, int(li[0]))
         arcnum += 1
 
         for p in pairs:
