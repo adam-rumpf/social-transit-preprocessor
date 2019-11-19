@@ -22,7 +22,7 @@ facility_in = "chicago_data/raw/facility/facility_address.txt"
 facility_out = "chicago_data/intermediate/facility.txt"
 
 # Transit network parameters
-k_clusters = 800 # number of stops after clustering (may be slightly less)
+k_clusters = 700 # number of stops after clustering (may be slightly less)
 stop_data = "chicago_data/raw/network/stops.txt"
 stop_list = "chicago_data/intermediate/all_stops.txt"
 trip_data = "chicago_data/raw/network/trips.txt"
@@ -78,14 +78,18 @@ op_coef_names = ["Operating_Cost", "Fares"] # operator cost term names
 op_coef = [1, cta_fare] # operator cost term coefficients
 us_coef_names = ["Riding", "Walking", "Waiting"] # user cost term names
 us_coef = [1, 1, 1] # user cost term coefficients
-assignment_epsilon = -1 # assignment model cutoff epsilon
-assignment_max = 1000 # maximum assignment model iterations
+assignment_fw_epsilon = -1 # assignment model cutoff epsilon
+assignment_fw_change1 = -1 # assignment model flow change cutoff
+assignment_fw_change2 = -1 # assignment model waiting change cutoff
+assignment_fw_max = 1000 # maximum assignment model iterations
 latency_names = ["alpha", "beta"] # list of latency function parameter names
 alpha = 4.0
 beta = (2*alpha-1)/(2*alpha-2)
 latency_parameters = [alpha, beta] # list of latency function parameters
-obj_names = ["FCA_Cutoff", "Gravity_Falloff"] # obj function parameter names
-obj_parameters = [30.0, 1.0] # objective function parameters
+obj_names = ["Lowest", "Gravity Falloff", "Multiplier"] # obj fun par names
+obj_parameters = [8, 1.0, 1000000000] # objective function parameters
+uc_percent = 0.01 # allowed relative increase in user cost
+oc_percent = 0.01 # allowed relative increase in operator cost
 misc_names = ["Horizon"] # misc parameter names
 misc_parameters = [1440.0] # misc parameters
 vehicle_file = "chicago_data/processed/vehicle_data.txt"
@@ -1502,6 +1506,7 @@ def misc_files(vehicle_output, operator_output, user_output, assignment_output,
     with open(operator_output, 'w') as f:
         print("Field\tValue", file=f)
         print("Initial\t-1", file=f)
+        print("Percent\t"+str(oc_percent), file=f)
         print("Elements\t"+str(len(op_coef)), file=f)
 
         # Print cost coefficients
@@ -1512,6 +1517,7 @@ def misc_files(vehicle_output, operator_output, user_output, assignment_output,
     with open(user_output, 'w') as f:
         print("Field\tValue", file=f)
         print("Initial\t-1", file=f)
+        print("Percent\t"+str(uc_percent), file=f)
         print("Elements\t"+str(len(us_coef)), file=f)
 
         # Print cost coefficients
@@ -1521,8 +1527,10 @@ def misc_files(vehicle_output, operator_output, user_output, assignment_output,
     # Assignment model parameter file
     with open(assignment_output, 'w') as f:
         print("Field\tValue", file=f)
-        print("Epsilon\t"+str(assignment_epsilon), file=f)
-        print("Cutoff\t"+str(assignment_max), file=f)
+        print("FW_Epsilon\t"+str(assignment_fw_epsilon), file=f)
+        print("FW_Flow_Epsilon\t"+str(assignment_fw_change1), file=f)
+        print("FW_Waiting_Epsilon\t"+str(assignment_fw_change2), file=f)
+        print("FW_Cutoff\t"+str(assignment_fw_max), file=f)
         print("Parameters\t"+str(len(latency_parameters)), file=f)
 
         # Print latency function parameters
