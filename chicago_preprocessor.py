@@ -22,7 +22,7 @@ facility_in = "chicago_data/raw/facility/facility_address.txt"
 facility_out = "chicago_data/intermediate/facility.txt"
 
 # Transit network parameters
-k_clusters = 700 # number of stops after clustering (may be slightly less)
+k_clusters = 1000 # number of stops after clustering (may be slightly less)
 stop_data = "chicago_data/raw/network/stops.txt"
 stop_list = "chicago_data/intermediate/all_stops.txt"
 trip_data = "chicago_data/raw/network/trips.txt"
