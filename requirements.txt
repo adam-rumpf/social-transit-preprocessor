@@ -1,0 +1,28 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: win-64
+@EXPLICIT
+https://repo.anaconda.com/pkgs/main/win-64/blas-1.0-mkl.conda
+https://repo.anaconda.com/pkgs/main/win-64/icc_rt-2019.0.0-h0cc432a_1.conda
+https://repo.anaconda.com/pkgs/main/win-64/intel-openmp-2020.2-254.conda
+https://repo.anaconda.com/pkgs/main/win-64/vs2015_runtime-14.16.27012-hf0eaf9b_3.conda
+https://repo.anaconda.com/pkgs/main/win-64/mkl-2020.2-256.conda
+https://repo.anaconda.com/pkgs/main/win-64/vc-14.1-h0510ff6_4.conda
+https://repo.anaconda.com/pkgs/main/win-64/zlib-1.2.11-h62dcd97_4.conda
+https://repo.anaconda.com/pkgs/main/win-64/sqlite-3.33.0-h2a8f88b_0.conda
+https://repo.anaconda.com/pkgs/main/win-64/python-3.6.9-h5500b2f_0.conda
+https://repo.anaconda.com/pkgs/main/noarch/certifi-2020.6.20-pyhd3eb1b0_3.conda
+https://conda.anaconda.org/conda-forge/noarch/geographiclib-1.50-py_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/python_abi-3.6-1_cp36m.tar.bz2
+https://repo.anaconda.com/pkgs/main/noarch/six-1.15.0-py_0.conda
+https://repo.anaconda.com/pkgs/main/noarch/wheel-0.35.1-py_0.conda
+https://repo.anaconda.com/pkgs/main/win-64/wincertstore-0.2-py36h7fe50ca_0.conda
+https://conda.anaconda.org/conda-forge/noarch/geopy-2.0.0-pyh9f0ad1d_0.tar.bz2
+https://repo.anaconda.com/pkgs/main/win-64/mkl-service-2.3.0-py36hb782905_0.conda
+https://repo.anaconda.com/pkgs/main/win-64/setuptools-50.3.0-py36haa95532_1.conda
+https://repo.anaconda.com/pkgs/main/win-64/numpy-base-1.19.2-py36ha3acd2a_0.conda
+https://repo.anaconda.com/pkgs/main/win-64/pip-20.2.4-py36haa95532_0.conda
+https://repo.anaconda.com/pkgs/main/win-64/mkl_fft-1.2.0-py36h45dec08_0.conda
+https://repo.anaconda.com/pkgs/main/win-64/mkl_random-1.1.1-py36h47e9c7a_0.conda
+https://repo.anaconda.com/pkgs/main/win-64/numpy-1.19.2-py36hadc3359_0.conda
+https://repo.anaconda.com/pkgs/main/win-64/scipy-1.5.2-py36h9439919_0.conda
